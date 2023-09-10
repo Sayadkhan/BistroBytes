@@ -25,8 +25,24 @@ interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonVaritants> {}
 
-const Button: React.FC<ButtonProps> = ({ variant, size }) => {
-  return <div>Button</div>;
+const Button: React.FC<ButtonProps> = ({
+  children,
+  type,
+  disabled,
+  onClick,
+  variant,
+  size,
+}) => {
+  return (
+    <button
+      onClick={onClick}
+      type={type}
+      disabled={disabled}
+      className={cn(buttonVaritants({ variant, size }))}
+    >
+      {children}
+    </button>
+  );
 };
 
 export default Button;
